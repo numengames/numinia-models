@@ -2,6 +2,19 @@ import { Schema, model, Types } from 'mongoose';
 
 import { validateModelOrAssistant } from './validations';
 
+interface ThreadAttributes {
+  id: string;
+  name?: string;
+}
+
+const ThreadSchema = new Schema<ThreadAttributes>(
+  {
+    id: String,
+    name: String,
+  },
+  { versionKey: false, _id: false },
+);
+
 interface AssistantAttributes {
   id: string;
   name: string;
@@ -23,6 +36,7 @@ export interface ConversationAttributes {
   updatedAt?: Date;
   walletId?: string;
   _id?: Types.ObjectId;
+  thread: ThreadAttributes;
   assistant?: AssistantAttributes;
 }
 
@@ -30,6 +44,7 @@ const schema = new Schema<ConversationAttributes>(
   {
     model: String,
     walletId: String,
+    thread: ThreadSchema,
     assistant: AssistantSchema,
     type: { type: String, required: true },
     origin: { type: String, required: true },
@@ -38,6 +53,8 @@ const schema = new Schema<ConversationAttributes>(
 );
 
 schema.pre('validate', validateModelOrAssistant);
+
+schema.index({ 'thread.id': 1 });
 
 export const ConversationModel = model<ConversationAttributes>(
   'Conversation',
