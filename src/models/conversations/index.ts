@@ -45,7 +45,7 @@ const schema = new Schema<ConversationAttributes>(
 
 schema.pre('validate', validateModelOrAssistant);
 
-schema.index({ 'thread.id': 1 });
+schema.index({ conversationId: 1 });
 
 export const ConversationModel = model<ConversationAttributes>(
   'Conversation',
