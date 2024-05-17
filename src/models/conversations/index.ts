@@ -17,7 +17,7 @@ const AssistantSchema = new Schema<AssistantAttributes>(
 
 export interface ConversationAttributes {
   type: string;
-  name: string;
+  name?: string;
   model?: string;
   origin: string;
   createdAt?: Date;
@@ -30,10 +30,10 @@ export interface ConversationAttributes {
 
 const schema = new Schema<ConversationAttributes>(
   {
+    name: String,
     model: String,
     walletId: String,
     assistant: AssistantSchema,
-    name: { type: String, required: true },
     type: { type: String, required: true },
     origin: { type: String, required: true },
     conversationId: { type: String, required: true },
