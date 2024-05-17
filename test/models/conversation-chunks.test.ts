@@ -28,7 +28,7 @@ describe('ConversationChunks', () => {
 
       conversationChunkObject = await createConversationChunk({
         value: 'test',
-        type: 'assistant',
+        role: 'assistant',
         conversationId: conversationObject._id,
       });
     });
@@ -48,7 +48,7 @@ describe('ConversationChunks', () => {
       expect(conversationChunkDocument._id).toBeDefined();
       expect(conversationChunkDocument.createdAt).toBeDefined();
       expect(conversationChunkDocument.updatedAt).toBeDefined();
-      expect(conversationChunkDocument.type).toBe(conversationChunkObject.type);
+      expect(conversationChunkDocument.role).toBe(conversationChunkObject.role);
       expect(conversationChunkDocument.format).toBe(
         conversationChunkObject.format,
       );

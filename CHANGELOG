@@ -5,11 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.1] - 2024-05-17
+
+### Changed
+- Rename property `type` into `role` in the conversation chunk schema
+
+## [1.5.0] - 2024-05-17
+
+### Added
+- Include a new property to show if the conversation is active or not
+
+### Changed
+- Rename property `type` into `format` in the conversation chunk schema (holding type for other intention)
+
 ## [1.4.0] - 2024-05-17
-- change: Mark the name param of the conversation schema optional
+
+### Changed
+- Mark the name param of the conversation schema optional
 
 ## [1.3.0] - 2024-05-17
-- feat: Adjust conversation model to a better data structure approach
+
+### Added
+- Adjust conversation model to a better data structure approach
 
 ## [1.2.0] - 2024-05-16
 

@@ -1,7 +1,7 @@
 import { Schema, model, Types } from 'mongoose';
 
 export interface ConversationChunkAttributes {
-  type: string;
+  role: string;
   value: string;
   format: string;
   createdAt?: Date;
@@ -17,7 +17,7 @@ const schema = new Schema<ConversationChunkAttributes>(
       ref: 'Conversation',
       type: Schema.Types.ObjectId,
     },
-    type: { type: String, required: true },
+    role: { type: String, required: true },
     value: { type: String, required: true },
     format: { type: String, required: true },
   },
