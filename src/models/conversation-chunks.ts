@@ -7,15 +7,15 @@ export interface ConversationChunkAttributes {
   createdAt?: Date;
   updatedAt?: Date;
   _id?: Types.ObjectId;
-  conversationId: Types.ObjectId;
+  conversationId: string;
 }
 
 const schema = new Schema<ConversationChunkAttributes>(
   {
     conversationId: {
+      type: String,
       required: true,
       ref: 'Conversation',
-      type: Schema.Types.ObjectId,
     },
     role: { type: String, required: true },
     value: { type: String, required: true },

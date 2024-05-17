@@ -29,7 +29,7 @@ describe('ConversationChunks', () => {
       conversationChunkObject = await createConversationChunk({
         value: 'test',
         role: 'assistant',
-        conversationId: conversationObject._id,
+        conversationId: conversationObject.conversationId,
       });
     });
 
