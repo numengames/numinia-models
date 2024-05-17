@@ -48,6 +48,7 @@ describe('Conversation', () => {
       expect(conversationDocument.updatedAt).toBeDefined();
       expect(conversationDocument.model).toBe(conversationObject.model);
       expect(conversationDocument.walletId).toBe(conversationObject.walletId);
+      expect(conversationDocument.isActive).toBeTruthy();
       expect(conversationDocument.assistant).toBeDefined();
       expect(conversationDocument.assistant?.id).toBe(
         conversationObject.assistant?.id,

@@ -23,6 +23,7 @@ export interface ConversationAttributes {
   createdAt?: Date;
   updatedAt?: Date;
   walletId?: string;
+  isActive?: boolean;
   _id?: Types.ObjectId;
   conversationId: string;
   assistant?: AssistantAttributes;
@@ -36,6 +37,7 @@ const schema = new Schema<ConversationAttributes>(
     assistant: AssistantSchema,
     type: { type: String, required: true },
     origin: { type: String, required: true },
+    isActive: { type: Boolean, default: true },
     conversationId: { type: String, required: true },
   },
   { versionKey: false, timestamps: true },
