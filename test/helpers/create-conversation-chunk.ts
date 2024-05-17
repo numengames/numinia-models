@@ -3,7 +3,8 @@ import { ConversationChunkAttributes } from '../../src/interfaces';
 
 export default async (params: Partial<ConversationChunkAttributes>) =>
   ConversationChunkModel.create({
+    type: params.type,
     value: params.value,
     conversationId: params.conversationId,
-    type: params.type || constants.ConversationChunkType.TEXT,
+    format: params.format || constants.ConversationChunkFormat.TEXT,
   });

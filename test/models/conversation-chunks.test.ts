@@ -27,7 +27,8 @@ describe('ConversationChunks', () => {
       });
 
       conversationChunkObject = await createConversationChunk({
-        value: 'patata',
+        value: 'test',
+        type: 'assistant',
         conversationId: conversationObject._id,
       });
     });
@@ -48,6 +49,9 @@ describe('ConversationChunks', () => {
       expect(conversationChunkDocument.createdAt).toBeDefined();
       expect(conversationChunkDocument.updatedAt).toBeDefined();
       expect(conversationChunkDocument.type).toBe(conversationChunkObject.type);
+      expect(conversationChunkDocument.format).toBe(
+        conversationChunkObject.format,
+      );
       expect(conversationChunkDocument.value).toBe(
         conversationChunkObject.value,
       );

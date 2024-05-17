@@ -3,6 +3,7 @@ import { Schema, model, Types } from 'mongoose';
 export interface ConversationChunkAttributes {
   type: string;
   value: string;
+  format: string;
   createdAt?: Date;
   updatedAt?: Date;
   _id?: Types.ObjectId;
@@ -11,9 +12,14 @@ export interface ConversationChunkAttributes {
 
 const schema = new Schema<ConversationChunkAttributes>(
   {
-    type: String,
-    value: String,
-    conversationId: { type: Schema.Types.ObjectId, ref: 'Conversation' },
+    conversationId: {
+      required: true,
+      ref: 'Conversation',
+      type: Schema.Types.ObjectId,
+    },
+    type: { type: String, required: true },
+    value: { type: String, required: true },
+    format: { type: String, required: true },
   },
   { versionKey: false, timestamps: true },
 );
