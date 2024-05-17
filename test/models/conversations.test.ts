@@ -31,10 +31,8 @@ describe('Conversation', () => {
           id: 'asst_loV42lYPajq6clFeuc7NUYJD',
           name: 'Test',
         },
-        thread: {
-          id: 'thread-1240380072355958896',
-          name: 'Test',
-        },
+        name: 'Test',
+        conversationId: 'thread-1240380072355958896',
       });
     });
 
@@ -57,13 +55,10 @@ describe('Conversation', () => {
       expect(conversationDocument.assistant?.name).toBe(
         conversationObject.assistant?.name,
       );
-      expect(conversationDocument.thread).toBeDefined();
-      expect(conversationDocument.thread?.id).toBe(
-        conversationObject.thread?.id,
+      expect(conversationDocument.conversationId).toBe(
+        conversationObject.conversationId,
       );
-      expect(conversationDocument.thread?.name).toBe(
-        conversationObject.thread?.name,
-      );
+      expect(conversationDocument.name).toBe(conversationObject.name);
     });
   });
 });

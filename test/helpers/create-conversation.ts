@@ -7,6 +7,7 @@ interface Params extends Partial<ConversationAttributes> {
 
 export default async (params: Params = {}) => {
   const query: Partial<ConversationAttributes> = {
+    name: params.name || 'test',
     origin: params.origin || constants.ConversationOrigins.WEB,
     type: params.conversationType || constants.ConversationTypes.CHATGPT,
   };

@@ -23,6 +23,7 @@ describe('ConversationChunks', () => {
     beforeAll(async () => {
       conversationObject = await createConversation({
         model: 'gpt-4o',
+        conversationId: 'thread-1240380072355958896',
       });
 
       conversationChunkObject = await createConversationChunk({
