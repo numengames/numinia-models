@@ -25,7 +25,6 @@ npm install -S @numengames/numinia-models
 
 ## Dependencies
 
-- [bluebird](https://npmjs.com/package/bluebird) instead of native Promise (Promise = bluebird)
 - [lodash](https://npmjs.com/package/lodash)
 - [mongoose](https://npmjs.com/package/mongoose)
 - [typescript](https://npmjs.com/package/typescript)
@@ -35,7 +34,6 @@ npm install -S @numengames/numinia-models
 - [@faker-js/faker](https://npmjs.com/package/@faker-js/faker)
 - [@shelf/jest-mongodb](https://npmjs.com/package/@shelf/jest-mongodb)
 - [@tsconfig/node16](https://npmjs.com/package/@tsconfig/node16)
-- [@types/bluebird](https://npmjs.com/package/@types/bluebird)
 - [@types/lodash](https://npmjs.com/package/@types/lodash)
 - [@typescript-eslint/eslint-plugin](https://npmjs.com/package/@typescript-eslint/eslint-plugin)
 - [@typescript-eslint/parser](https://npmjs.com/package/@typescript-eslint/parser)

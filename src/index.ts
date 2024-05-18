@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import Bluebird from 'bluebird';
 import mongoose from 'mongoose';
 
 import constants from './constants';
@@ -8,8 +7,6 @@ import mongooseConnect from './mongoose-connect';
 export * from './models';
 export * as types from './types';
 export * as interfaces from './interfaces';
-
-global.Promise = <any>Bluebird;
 
 export async function connect(
   uri: string,
