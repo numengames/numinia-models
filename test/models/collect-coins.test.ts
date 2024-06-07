@@ -37,6 +37,7 @@ describe('CollectCoins', () => {
       expect(collectCoinsDocument.space.origin).toBe(
         collectCoinsObject.space.origin,
       );
+      expect(collectCoinsDocument.score).toBe(collectCoinsObject.score);
       expect(collectCoinsDocument.timer).toBe(collectCoinsObject.timer);
     });
   });

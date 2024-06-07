@@ -22,7 +22,7 @@ export interface CollectCoinsAttributes {
     origin: string;
   };
   _id?: Types.ObjectId;
-  collectedCoins: number;
+  score: number;
   timer: number;
 }
 
@@ -31,7 +31,7 @@ const schema = new Schema<CollectCoinsAttributes>(
     walletId: String,
     space: CollectCoinsSpaceElementSchema,
     timer: { type: Number, required: true },
-    collectedCoins: { type: Number, required: true },
+    score: { type: Number, required: true },
   },
   { versionKey: false, timestamps: true },
 );

@@ -10,7 +10,7 @@ export default (params: Partial<CollectCoinsAttributes> = {}) =>
       name: faker.word.words(),
       origin: faker.helpers.arrayElement(['oncyber', 'hyperfy', 'global']),
     },
-    collectedCoins: faker.number.int({ min: 1, max: 30 }),
+    score: faker.number.int({ min: 1, max: 30 }),
     timer: faker.number.int({ min: 1, max: 1000 }),
     ...params,
   });
