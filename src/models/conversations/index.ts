@@ -23,7 +23,7 @@ export interface ConversationAttributes {
   createdAt?: Date;
   updatedAt?: Date;
   isActive?: boolean;
-  tokensSpent: number;
+  tokensSpent?: number;
   _id?: Types.ObjectId;
   user?: Types.ObjectId;
   conversationId: string;
