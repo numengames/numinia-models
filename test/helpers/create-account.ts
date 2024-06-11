@@ -5,6 +5,6 @@ import { AccountAttributes } from '../../src/interfaces';
 
 export default (params: Partial<AccountAttributes> = {}) =>
   AccountModel.create({
-    password: params.password || faker.internet.password(),
+    password: faker.internet.password(),
     ...params,
   });

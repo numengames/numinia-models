@@ -15,15 +15,23 @@ const AccountElementSchema = new Schema<UserAccountAttributes>(
 );
 
 export interface UserAttributes {
-  user: string;
+  userName: string;
+  isActive: boolean;
+  isBlocked: boolean;
   _id?: Types.ObjectId;
-  accounts: Types.Array<UserAccountAttributes>;
+  lastConectionDate: Date;
+  walletList?: string[];
+  accounts: UserAccountAttributes[];
 }
 
 const schema = new Schema<UserAttributes>(
   {
-    user: String,
+    userName: String,
+    walletList: [String],
     accounts: [AccountElementSchema],
+    isActive: { type: Boolean, default: true },
+    isBlocked: { type: Boolean, default: false },
+    lastConectionDate: { type: Date, default: Date.now },
   },
   { versionKey: false, timestamps: true },
 );

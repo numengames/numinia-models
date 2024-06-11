@@ -2,22 +2,32 @@ import mongoose from 'mongoose';
 import { faker } from '@faker-js/faker';
 
 import { UserModel, constants } from '../../src';
-import { UserAttributes } from '../../src/interfaces';
+import { UserAccountAttributes, UserAttributes } from '../../src/interfaces';
 
 interface Params extends Partial<UserAttributes> {
-  accountId?: mongoose.Types.ObjectId;
+  account?: UserAccountAttributes;
 }
 
 export default (params: Params = {}) => {
-  const query = {
-    user: faker.internet.userName(),
-    accounts: [
-      {
-        accountId: params.accountId || new mongoose.Types.ObjectId(),
-        kind: constants.AccountKindTypes.INTERNAL,
-      },
-    ],
+  const query: Partial<UserAttributes> = {
+    accounts: [],
+    lastConectionDate: new Date(),
+    userName: faker.internet.userName(),
+    walletList: Array.from({ length: 1 }).map(() =>
+      faker.finance.ethereumAddress(),
+    ),
+    isActive: faker.helpers.arrayElement([true, false]),
+    isBlocked: faker.helpers.arrayElement([true, false]),
   };
+
+  if (!params.account) {
+    query.accounts?.push({
+      kind: constants.AccountKindTypes.INTERNAL,
+      accountId: new mongoose.Types.ObjectId(),
+    } as any);
+  } else {
+    query.accounts?.push(params.account);
+  }
 
   return UserModel.create({
     ...query,

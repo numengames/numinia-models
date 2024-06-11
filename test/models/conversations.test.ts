@@ -1,9 +1,10 @@
 import { HydratedDocument } from 'mongoose';
 
+import createUser from '../helpers/create-user';
 import { ConversationDocument } from '../../src/types';
-import { mongoose, ConversationModel } from '../../src';
-import { ConversationAttributes } from '../../src/interfaces';
+import { mongoose, ConversationModel, UserModel } from '../../src';
 import createConversation from '../helpers/create-conversation';
+import { ConversationAttributes, UserAttributes } from '../../src/interfaces';
 
 const testDatabase = require('../test-db')(mongoose);
 
@@ -21,12 +22,14 @@ describe('Conversation', () => {
   });
 
   describe('when create a new conversation', () => {
+    let userObject: HydratedDocument<UserAttributes>;
     let conversationObject: HydratedDocument<ConversationAttributes>;
 
     beforeAll(async () => {
+      userObject = await createUser();
       conversationObject = await createConversation({
         model: 'gpt-4o',
-        walletId: '0x000000000000000000000000000000000000dEaD',
+        user: userObject._id,
         assistant: {
           id: 'asst_loV42lYPajq6clFeuc7NUYJD',
           name: 'Test',
@@ -36,7 +39,12 @@ describe('Conversation', () => {
       });
     });
 
-    afterAll(() => ConversationModel.deleteOne({ _id: conversationObject.id }));
+    afterAll(() =>
+      Promise.all([
+        UserModel.deleteOne({ _id: userObject.id }),
+        ConversationModel.deleteOne({ _id: conversationObject.id }),
+      ]),
+    );
 
     test('it should contain all the properties', async () => {
       const conversationDocument = <ConversationDocument>(
@@ -46,8 +54,10 @@ describe('Conversation', () => {
       expect(conversationDocument._id).toBeDefined();
       expect(conversationDocument.createdAt).toBeDefined();
       expect(conversationDocument.updatedAt).toBeDefined();
+      expect(conversationDocument.user?.toString()).toBe(
+        conversationObject.user?.toString(),
+      );
       expect(conversationDocument.model).toBe(conversationObject.model);
-      expect(conversationDocument.walletId).toBe(conversationObject.walletId);
       expect(conversationDocument.isActive).toBeTruthy();
       expect(conversationDocument.assistant).toBeDefined();
       expect(conversationDocument.assistant?.id).toBe(
@@ -60,6 +70,9 @@ describe('Conversation', () => {
         conversationObject.conversationId,
       );
       expect(conversationDocument.name).toBe(conversationObject.name);
+      expect(conversationDocument.tokensSpent).toBe(
+        conversationObject.tokensSpent,
+      );
     });
   });
 });

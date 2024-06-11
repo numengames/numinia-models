@@ -22,9 +22,10 @@ export interface ConversationAttributes {
   origin: string;
   createdAt?: Date;
   updatedAt?: Date;
-  walletId?: string;
   isActive?: boolean;
+  tokensSpent: number;
   _id?: Types.ObjectId;
+  user?: Types.ObjectId;
   conversationId: string;
   assistant?: AssistantAttributes;
 }
@@ -33,12 +34,13 @@ const schema = new Schema<ConversationAttributes>(
   {
     name: String,
     model: String,
-    walletId: String,
     assistant: AssistantSchema,
     type: { type: String, required: true },
     origin: { type: String, required: true },
+    tokensSpent: { type: Number, default: 0 },
     isActive: { type: Boolean, default: true },
     conversationId: { type: String, required: true },
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
   },
   { versionKey: false, timestamps: true },
 );
