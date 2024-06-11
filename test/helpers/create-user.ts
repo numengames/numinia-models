@@ -13,9 +13,7 @@ export default (params: Params = {}) => {
     accounts: [],
     lastConectionDate: new Date(),
     userName: faker.internet.userName(),
-    walletList: Array.from({ length: 1 }).map(() =>
-      faker.finance.ethereumAddress(),
-    ),
+    wallet: faker.finance.ethereumAddress(),
     isActive: faker.helpers.arrayElement([true, false]),
     isBlocked: faker.helpers.arrayElement([true, false]),
   };

@@ -40,11 +40,11 @@ describe('Users', () => {
       );
 
       expect(credentialDocument._id).toBeDefined();
+      expect(credentialDocument.wallet).toBe(userObject.wallet);
       expect(credentialDocument.userName).toBe(userObject.userName);
       expect(credentialDocument.isActive).toBe(userObject.isActive);
       expect(credentialDocument.isActive).toBe(userObject.isActive);
       expect(credentialDocument.isBlocked).toBe(userObject.isBlocked);
-      expect(credentialDocument.walletList![0]).toBe(userObject.walletList![0]);
       expect(credentialDocument.accounts).toHaveLength(1);
       expect(credentialDocument.lastConectionDate.toString()).toBe(
         userObject.lastConectionDate.toString(),
