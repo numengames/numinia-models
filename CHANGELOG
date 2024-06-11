@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1] - 2024-06-11
+
+### Fixed
+- Solve an issue for what the tokensSpent interface param isn't optional
+
+## [2.1.0] - 2024-06-11
+
+### Changed
+- Split the game-scores collection into two: games and game-scores for better data management.
+- Replaced the walletId property with a reference to the user collection.
+
+### Added
+- Added properties to track the user's last connection time.
+- Added a list of connected wallets.
+- Added a property to indicate whether the user is active or blocked.
+- Added a property to track the amount of AI tokens spent.
+
+### Changed
+- Renamed database collection from `collect-coins` to `game-score` for better clarity and generalization. This change is not backward-compatible and may require updates to any code or scripts that interact with the database.
+
 ## [2.0.0] - 2024-06-08
 
 ### Changed
