@@ -17,6 +17,8 @@ const AccountElementSchema = new Schema<UserAccountAttributes>(
 export interface UserAttributes {
   wallet?: string;
   userName: string;
+  createdAt?: Date;
+  updatedAt?: Date;
   isActive: boolean;
   isBlocked: boolean;
   _id?: Types.ObjectId;
