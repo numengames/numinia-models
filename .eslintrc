@@ -8,8 +8,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
-    "eslint-plugin-jest",
-    "prettier"
+    "eslint-plugin-jest"
   ],
   "extends": [
     "eslint:recommended",

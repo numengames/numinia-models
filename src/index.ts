@@ -8,10 +8,7 @@ export * from './models';
 export * as types from './types';
 export * as interfaces from './interfaces';
 
-export async function connect(
-  uri: string,
-  options: Record<string, unknown>,
-): Promise<void> {
+export async function connect(uri: string, options: Record<string, unknown>): Promise<void> {
   if (_.isNil(mongoose)) {
     throw new Error('Specify `mongoose` as the first argument');
   }

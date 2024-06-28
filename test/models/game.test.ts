@@ -22,9 +22,7 @@ describe('Game', () => {
     afterAll(() => GameModel.deleteOne({ _id: gameObject.id }));
 
     test('it should contain all the properties', async () => {
-      const gameDocument = <GameDocument>(
-        await GameModel.findById(gameObject.id)
-      );
+      const gameDocument = <GameDocument>await GameModel.findById(gameObject.id);
 
       expect(gameDocument._id).toBeDefined();
       expect(gameDocument.createdAt).toBeDefined();

@@ -22,9 +22,7 @@ describe('Assistant', () => {
     afterAll(() => AssistantModel.deleteOne({ _id: assistantObject.id }));
 
     test('it should contain all the properties', async () => {
-      const assistantDocument = <AssistantDocument>(
-        await AssistantModel.findById(assistantObject.id)
-      );
+      const assistantDocument = <AssistantDocument>await AssistantModel.findById(assistantObject.id);
 
       expect(assistantDocument._id).toBeDefined();
       expect(assistantDocument.createdAt).toBeDefined();

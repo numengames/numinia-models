@@ -1,13 +1,7 @@
 import { Mongoose } from 'mongoose';
 
-export default (
-  mongoose: Mongoose,
-  uri: string,
-  options: Record<string, unknown>,
-) => {
-  mongoose
-    .connect(uri, options)
-    .then(() => console.log('[insurances-models] Mongoose connected'));
+export default (mongoose: Mongoose, uri: string, options: Record<string, unknown>) => {
+  mongoose.connect(uri, options).then(() => console.log('[insurances-models] Mongoose connected'));
 
   mongoose.connection.once('error', async (err: Error) => {
     console.log('[insurances-models] Mongoose error: ', err);

@@ -35,9 +35,7 @@ describe('Users', () => {
     );
 
     test('it should contain all the properties', async () => {
-      const credentialDocument = <UserDocument>(
-        await UserModel.findById(userObject.id)
-      );
+      const credentialDocument = <UserDocument>await UserModel.findById(userObject.id);
 
       expect(credentialDocument._id).toBeDefined();
       expect(credentialDocument.walletId).toBe(userObject.walletId);
@@ -46,12 +44,8 @@ describe('Users', () => {
       expect(credentialDocument.isActive).toBe(userObject.isActive);
       expect(credentialDocument.isBlocked).toBe(userObject.isBlocked);
       expect(credentialDocument.accounts).toHaveLength(1);
-      expect(credentialDocument.lastConectionDate.toString()).toBe(
-        userObject.lastConectionDate.toString(),
-      );
-      expect(credentialDocument.accounts[0].kind).toBe(
-        userObject.accounts[0].kind,
-      );
+      expect(credentialDocument.lastConectionDate.toString()).toBe(userObject.lastConectionDate.toString());
+      expect(credentialDocument.accounts[0].kind).toBe(userObject.accounts[0].kind);
       expect(credentialDocument.accounts[0].accountId?.toString()).toEqual(
         userObject.accounts[0].accountId?.toString(),
       );

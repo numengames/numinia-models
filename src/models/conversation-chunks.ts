@@ -24,11 +24,6 @@ const schema = new Schema<ConversationChunkAttributes>(
   { versionKey: false, timestamps: true },
 );
 
-export const ConversationChunkModel = model<ConversationChunkAttributes>(
-  'ConversationChunk',
-  schema,
-);
+export const ConversationChunkModel = model<ConversationChunkAttributes>('ConversationChunk', schema);
 
-export type ConversationChunkDocument = ReturnType<
-  (typeof ConversationChunkModel)['hydrate']
->;
+export type ConversationChunkDocument = ReturnType<(typeof ConversationChunkModel)['hydrate']>;

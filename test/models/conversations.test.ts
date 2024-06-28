@@ -54,25 +54,15 @@ describe('Conversation', () => {
       expect(conversationDocument._id).toBeDefined();
       expect(conversationDocument.createdAt).toBeDefined();
       expect(conversationDocument.updatedAt).toBeDefined();
-      expect(conversationDocument.user?.toString()).toBe(
-        conversationObject.user?.toString(),
-      );
+      expect(conversationDocument.user?.toString()).toBe(conversationObject.user?.toString());
       expect(conversationDocument.model).toBe(conversationObject.model);
       expect(conversationDocument.isActive).toBeTruthy();
       expect(conversationDocument.assistant).toBeDefined();
-      expect(conversationDocument.assistant?.id).toBe(
-        conversationObject.assistant?.id,
-      );
-      expect(conversationDocument.assistant?.name).toBe(
-        conversationObject.assistant?.name,
-      );
-      expect(conversationDocument.conversationId).toBe(
-        conversationObject.conversationId,
-      );
+      expect(conversationDocument.assistant?.id).toBe(conversationObject.assistant?.id);
+      expect(conversationDocument.assistant?.name).toBe(conversationObject.assistant?.name);
+      expect(conversationDocument.conversationId).toBe(conversationObject.conversationId);
       expect(conversationDocument.name).toBe(conversationObject.name);
-      expect(conversationDocument.tokensSpent).toBe(
-        conversationObject.tokensSpent,
-      );
+      expect(conversationDocument.tokensSpent).toBe(conversationObject.tokensSpent);
     });
   });
 });

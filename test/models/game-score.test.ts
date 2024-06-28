@@ -1,10 +1,6 @@
 import { HydratedDocument } from 'mongoose';
 
-import {
-  GameAttributes,
-  UserAttributes,
-  GameScoreAttributes,
-} from '../../src/interfaces';
+import { GameAttributes, UserAttributes, GameScoreAttributes } from '../../src/interfaces';
 import createGame from '../helpers/create-game';
 import createUser from '../helpers/create-user';
 import { GameScoreDocument } from '../../src/types';
@@ -24,10 +20,7 @@ describe('GameScore', () => {
     let gameScoreObject: HydratedDocument<GameScoreAttributes>;
 
     beforeAll(async () => {
-      [gameObject, userObject] = await Promise.all([
-        createGame(),
-        createUser(),
-      ]);
+      [gameObject, userObject] = await Promise.all([createGame(), createUser()]);
       gameScoreObject = await createGameScore({ user: userObject._id });
     });
 
@@ -40,16 +33,12 @@ describe('GameScore', () => {
     );
 
     test('it should contain all the properties', async () => {
-      const gameScoreDocument = <GameScoreDocument>(
-        await GameScoreModel.findById(gameScoreObject.id)
-      );
+      const gameScoreDocument = <GameScoreDocument>await GameScoreModel.findById(gameScoreObject.id);
 
       expect(gameScoreDocument._id).toBeDefined();
       expect(gameScoreDocument.createdAt).toBeDefined();
       expect(gameScoreDocument.updatedAt).toBeDefined();
-      expect(gameScoreDocument.user?.toString()).toBe(
-        gameScoreObject.user?.toString(),
-      );
+      expect(gameScoreDocument.user?.toString()).toBe(gameScoreObject.user?.toString());
       expect(gameScoreDocument.score).toBe(gameScoreObject.score);
       expect(gameScoreDocument.timer).toBe(gameScoreObject.timer);
     });

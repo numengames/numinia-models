@@ -22,9 +22,7 @@ describe('Account', () => {
     afterAll(() => AccountModel.deleteOne({ _id: accountObject.id }));
 
     test('it should contain all the properties', async () => {
-      const accountDocument = <AccountDocument>(
-        await AccountModel.findById(accountObject.id)
-      );
+      const accountDocument = <AccountDocument>await AccountModel.findById(accountObject.id);
 
       expect(accountDocument._id).toBeDefined();
       expect(accountDocument.createdAt).toBeDefined();

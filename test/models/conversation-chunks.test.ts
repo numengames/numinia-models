@@ -1,9 +1,6 @@
 import { HydratedDocument } from 'mongoose';
 
-import {
-  ConversationAttributes,
-  ConversationChunkAttributes,
-} from '../../src/interfaces';
+import { ConversationAttributes, ConversationChunkAttributes } from '../../src/interfaces';
 import { ConversationChunkDocument } from '../../src/types';
 import createConversation from '../helpers/create-conversation';
 import createConversationChunk from '../helpers/create-conversation-chunk';
@@ -49,12 +46,8 @@ describe('ConversationChunks', () => {
       expect(conversationChunkDocument.createdAt).toBeDefined();
       expect(conversationChunkDocument.updatedAt).toBeDefined();
       expect(conversationChunkDocument.role).toBe(conversationChunkObject.role);
-      expect(conversationChunkDocument.format).toBe(
-        conversationChunkObject.format,
-      );
-      expect(conversationChunkDocument.value).toBe(
-        conversationChunkObject.value,
-      );
+      expect(conversationChunkDocument.format).toBe(conversationChunkObject.format);
+      expect(conversationChunkDocument.value).toBe(conversationChunkObject.value);
       expect(conversationChunkDocument.conversationId.toString()).toBe(
         conversationChunkObject.conversationId.toString(),
       );

@@ -49,11 +49,6 @@ schema.pre('validate', validateModelOrAssistant);
 
 schema.index({ conversationId: 1 });
 
-export const ConversationModel = model<ConversationAttributes>(
-  'Conversation',
-  schema,
-);
+export const ConversationModel = model<ConversationAttributes>('Conversation', schema);
 
-export type ConversationDocument = ReturnType<
-  (typeof ConversationModel)['hydrate']
->;
+export type ConversationDocument = ReturnType<(typeof ConversationModel)['hydrate']>;
