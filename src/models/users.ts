@@ -15,7 +15,7 @@ const AccountElementSchema = new Schema<UserAccountAttributes>(
 );
 
 export interface UserAttributes {
-  wallet?: string;
+  walletId?: string;
   userName: string;
   createdAt?: Date;
   updatedAt?: Date;
@@ -28,7 +28,7 @@ export interface UserAttributes {
 
 const schema = new Schema<UserAttributes>(
   {
-    wallet: String,
+    walletId: String,
     userName: String,
     accounts: [AccountElementSchema],
     isActive: { type: Boolean, default: true },

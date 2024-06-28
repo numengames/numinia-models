@@ -40,7 +40,7 @@ describe('Users', () => {
       );
 
       expect(credentialDocument._id).toBeDefined();
-      expect(credentialDocument.wallet).toBe(userObject.wallet);
+      expect(credentialDocument.walletId).toBe(userObject.walletId);
       expect(credentialDocument.userName).toBe(userObject.userName);
       expect(credentialDocument.isActive).toBe(userObject.isActive);
       expect(credentialDocument.isActive).toBe(userObject.isActive);
