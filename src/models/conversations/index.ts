@@ -25,7 +25,7 @@ export interface ConversationAttributes {
   isActive?: boolean;
   tokensSpent?: number;
   _id?: Types.ObjectId;
-  user?: Types.ObjectId;
+  player?: Types.ObjectId;
   conversationId: string;
   assistant?: AssistantAttributes;
 }
@@ -40,7 +40,7 @@ const schema = new Schema<ConversationAttributes>(
     tokensSpent: { type: Number, default: 0 },
     isActive: { type: Boolean, default: true },
     conversationId: { type: String, required: true },
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    player: { type: Schema.Types.ObjectId, ref: 'Player' },
   },
   { versionKey: false, timestamps: true },
 );

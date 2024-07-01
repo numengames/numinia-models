@@ -7,21 +7,21 @@ export interface GameScoreAttributes {
   updatedAt?: Date;
   _id?: Types.ObjectId;
   game: Types.ObjectId;
-  user?: Types.ObjectId;
+  player?: Types.ObjectId;
 }
 
 const schema = new Schema<GameScoreAttributes>(
   {
     timer: { type: Number, required: true },
     score: { type: Number, required: true },
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    player: { type: Schema.Types.ObjectId, ref: 'Player' },
     game: { type: Schema.Types.ObjectId, required: true, ref: 'Game' },
   },
   { versionKey: false, timestamps: true },
 );
 
 schema.index({ game: 1 });
-schema.index({ user: 1 }, { sparse: true });
+schema.index({ player: 1 }, { sparse: true });
 
 export const GameScoreModel = model<GameScoreAttributes>('GameScore', schema);
 

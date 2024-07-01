@@ -1,12 +1,12 @@
 import { Schema, model, Types } from 'mongoose';
 import { AccountAttributes } from '../interfaces';
 
-export interface UserAccountAttributes {
+export interface PlayerAccountAttributes {
   kind: string;
   accountId?: Types.ObjectId | AccountAttributes;
 }
 
-const AccountElementSchema = new Schema<UserAccountAttributes>(
+const AccountElementSchema = new Schema<PlayerAccountAttributes>(
   {
     kind: String,
     accountId: { type: Schema.Types.ObjectId, ref: 'Account' },
@@ -14,7 +14,7 @@ const AccountElementSchema = new Schema<UserAccountAttributes>(
   { versionKey: false, _id: false },
 );
 
-export interface UserAttributes {
+export interface PlayerAttributes {
   walletId?: string;
   userName: string;
   createdAt?: Date;
@@ -23,10 +23,10 @@ export interface UserAttributes {
   isBlocked: boolean;
   _id?: Types.ObjectId;
   lastConectionDate: Date;
-  accounts: UserAccountAttributes[];
+  accounts: PlayerAccountAttributes[];
 }
 
-const schema = new Schema<UserAttributes>(
+const schema = new Schema<PlayerAttributes>(
   {
     walletId: String,
     userName: String,
@@ -38,6 +38,6 @@ const schema = new Schema<UserAttributes>(
   { versionKey: false, timestamps: true },
 );
 
-export const UserModel = model<UserAttributes>('User', schema);
+export const PlayerModel = model<PlayerAttributes>('Player', schema);
 
-export type UserDocument = ReturnType<(typeof UserModel)['hydrate']>;
+export type PlayerDocument = ReturnType<(typeof PlayerModel)['hydrate']>;

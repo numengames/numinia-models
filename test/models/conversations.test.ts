@@ -1,10 +1,10 @@
 import { HydratedDocument } from 'mongoose';
 
-import createUser from '../helpers/create-user';
+import createPlayer from '../helpers/create-player';
 import { ConversationDocument } from '../../src/types';
-import { mongoose, ConversationModel, UserModel } from '../../src';
+import { mongoose, ConversationModel, PlayerModel } from '../../src';
 import createConversation from '../helpers/create-conversation';
-import { ConversationAttributes, UserAttributes } from '../../src/interfaces';
+import { ConversationAttributes, PlayerAttributes } from '../../src/interfaces';
 
 const testDatabase = require('../test-db')(mongoose);
 
@@ -22,14 +22,14 @@ describe('Conversation', () => {
   });
 
   describe('when create a new conversation', () => {
-    let userObject: HydratedDocument<UserAttributes>;
+    let playerObject: HydratedDocument<PlayerAttributes>;
     let conversationObject: HydratedDocument<ConversationAttributes>;
 
     beforeAll(async () => {
-      userObject = await createUser();
+      playerObject = await createPlayer();
       conversationObject = await createConversation({
         model: 'gpt-4o',
-        user: userObject._id,
+        player: playerObject._id,
         assistant: {
           id: 'asst_loV42lYPajq6clFeuc7NUYJD',
           name: 'Test',
@@ -41,7 +41,7 @@ describe('Conversation', () => {
 
     afterAll(() =>
       Promise.all([
-        UserModel.deleteOne({ _id: userObject.id }),
+        PlayerModel.deleteOne({ _id: playerObject.id }),
         ConversationModel.deleteOne({ _id: conversationObject.id }),
       ]),
     );
@@ -54,7 +54,7 @@ describe('Conversation', () => {
       expect(conversationDocument._id).toBeDefined();
       expect(conversationDocument.createdAt).toBeDefined();
       expect(conversationDocument.updatedAt).toBeDefined();
-      expect(conversationDocument.user?.toString()).toBe(conversationObject.user?.toString());
+      expect(conversationDocument.player?.toString()).toBe(conversationObject.player?.toString());
       expect(conversationDocument.model).toBe(conversationObject.model);
       expect(conversationDocument.isActive).toBeTruthy();
       expect(conversationDocument.assistant).toBeDefined();

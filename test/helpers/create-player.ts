@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
 import { faker } from '@faker-js/faker';
 
-import { UserModel, constants } from '../../src';
-import { UserAccountAttributes, UserAttributes } from '../../src/interfaces';
+import { PlayerModel, constants } from '../../src';
+import { PlayerAccountAttributes, PlayerAttributes } from '../../src/interfaces';
 
-interface Params extends Partial<UserAttributes> {
-  account?: UserAccountAttributes;
+interface Params extends Partial<PlayerAttributes> {
+  account?: PlayerAccountAttributes;
 }
 
 export default (params: Params = {}) => {
-  const query: Partial<UserAttributes> = {
+  const query: Partial<PlayerAttributes> = {
     accounts: [],
     lastConectionDate: new Date(),
     userName: faker.internet.userName(),
@@ -27,7 +27,7 @@ export default (params: Params = {}) => {
     query.accounts?.push(params.account);
   }
 
-  return UserModel.create({
+  return PlayerModel.create({
     ...query,
     ...params,
   });
