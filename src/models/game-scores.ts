@@ -12,8 +12,8 @@ export interface GameScoreAttributes {
 
 const schema = new Schema<GameScoreAttributes>(
   {
+    score: Number,
     timer: { type: Number, required: true },
-    score: { type: Number, required: true },
     player: { type: Schema.Types.ObjectId, ref: 'Player' },
     game: { type: Schema.Types.ObjectId, required: true, ref: 'Game' },
   },
