@@ -1,8 +1,8 @@
 import { Schema, model, Types } from 'mongoose';
 
 export interface GameScoreAttributes {
-  score: number;
   timer: number;
+  score?: number;
   createdAt?: Date;
   updatedAt?: Date;
   _id?: Types.ObjectId;
