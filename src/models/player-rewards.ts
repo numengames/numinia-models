@@ -1,18 +1,19 @@
 import { Schema, model, Types } from 'mongoose';
 
 import { RewardDocument } from './rewards';
+import { PlayerDocument } from './players';
 
 export interface PlayerRewardAttributes {
-  walletId: string;
   createdAt?: Date;
   updatedAt?: Date;
   _id?: Types.ObjectId;
+  playerId: Types.ObjectId | PlayerDocument;
   rewardId: Types.ObjectId | RewardDocument;
 }
 
 const schema = new Schema<PlayerRewardAttributes>(
   {
-    walletId: { type: String, required: true },
+    playerId: { type: String, ref: 'Player', required: true },
     rewardId: { type: Schema.Types.ObjectId, ref: 'Reward', required: true },
   },
   { versionKey: false, timestamps: true },

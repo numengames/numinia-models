@@ -6,7 +6,7 @@ import { PlayerRewardAttributes } from '../../src/interfaces';
 
 export default async (params: Partial<PlayerRewardAttributes>) =>
   PlayerRewardModel.create({
+    playerId: new mongoose.Types.ObjectId(),
     walletId: faker.finance.ethereumAddress(),
-    rewardId: new mongoose.Types.ObjectId(),
     ...params,
   });
