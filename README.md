@@ -2,6 +2,14 @@
 
 > MongoDB models for Numinia projects
 
+## Requirements
+
+This project requires the following dependencies:
+
+- **MongoDB**: Version 7.x or higher
+- **Node.js**: Version 20.x or higher
+- **Mongoose**: Version 8.x or higher
+
 ## Installing
 
 For the latest stable version:
