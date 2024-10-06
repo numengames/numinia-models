@@ -1,42 +1,30 @@
 import { Schema, model, Types } from 'mongoose';
-import { AccountAttributes } from '../interfaces';
-
-export interface PlayerAccountAttributes {
-  kind: string;
-  accountId?: Types.ObjectId | AccountAttributes;
-}
-
-const AccountElementSchema = new Schema<PlayerAccountAttributes>(
-  {
-    kind: String,
-    accountId: { type: Schema.Types.ObjectId, ref: 'Account' },
-  },
-  { versionKey: false, _id: false },
-);
-
 export interface PlayerAttributes {
-  walletId?: string;
-  userName: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  _id?: Types.ObjectId;
+  playerName: string;
+  oncyberId?: string;
+  hyperfyId?: string;
   isActive: boolean;
   isBlocked: boolean;
-  _id?: Types.ObjectId;
-  lastConectionDate: Date;
-  accounts: PlayerAccountAttributes[];
+  lastConnectionDate: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const schema = new Schema<PlayerAttributes>(
   {
-    walletId: String,
-    userName: String,
-    accounts: [AccountElementSchema],
+    playerName: { type: String, required: true, trim: true },
+    oncyberId: { type: String, unique: true, sparse: true },
+    hyperfyId: { type: String, unique: true, sparse: true },
     isActive: { type: Boolean, default: true },
     isBlocked: { type: Boolean, default: false },
-    lastConectionDate: { type: Date, default: Date.now },
+    lastConnectionDate: { type: Date, default: Date.now },
   },
   { versionKey: false, timestamps: true },
 );
+
+schema.index({ oncyberId: 1 }, { unique: true, sparse: true });
+schema.index({ hyperfyId: 1 }, { unique: true, sparse: true });
 
 export const PlayerModel = model<PlayerAttributes>('Player', schema);
 
