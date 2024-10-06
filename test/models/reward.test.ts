@@ -2,7 +2,11 @@ import createReward from '../helpers/create-reward';
 
 import { mongoose, RewardModel } from '../../src';
 import RewardTypes from '../../src/constants/reward-types';
-import { DigitalAssetRewardAttributes, InGameRewardAttributes, RewardAttributes } from '../../src/interfaces';
+import {
+  DigitalAssetRewardAttributes,
+  InGameRewardAttributes,
+  RewardAttributes,
+} from '../../src/interfaces';
 import { HydratedDocument } from 'mongoose';
 
 const testDatabase = require('../test-db')(mongoose);
@@ -22,7 +26,9 @@ describe('Game', () => {
     afterAll(() => RewardModel.deleteOne({ _id: playerRewardObject._id }));
 
     test(`it should contain all the properties for ${RewardTypes.IN_GAME_ITEM}`, async () => {
-      const RewardDocument = <InGameRewardAttributes>await RewardModel.findById(playerRewardObject._id);
+      const RewardDocument = <InGameRewardAttributes>(
+        await RewardModel.findById(playerRewardObject._id)
+      );
 
       expect(RewardDocument?._id).toBeDefined();
       expect(RewardDocument?.isActive).toBeDefined();
@@ -46,7 +52,9 @@ describe('Game', () => {
     afterAll(() => RewardModel.deleteOne({ _id: playerRewardObject._id }));
 
     test(`it should contain all the properties for ${RewardTypes.DIGITAL_ASSET}`, async () => {
-      const RewardDocument = <DigitalAssetRewardAttributes>await RewardModel.findById(playerRewardObject._id);
+      const RewardDocument = <DigitalAssetRewardAttributes>(
+        await RewardModel.findById(playerRewardObject._id)
+      );
 
       expect(RewardDocument?._id).toBeDefined();
       expect(RewardDocument?.isActive).toBeDefined();

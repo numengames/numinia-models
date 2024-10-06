@@ -1,4 +1,4 @@
-module.exports = (mongoose) => {
+module.exports = mongoose => {
   async function connect() {
     await mongoose.connect(global.__MONGO_URI__, {});
   }

@@ -9,7 +9,7 @@
     "test": "jest --maxWorkers=50%",
     "test:ci": "jest --maxWorkers=50%",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts —-fix",
+    "lint:fix": "eslint . --ext .ts --fix",
     "publish-patch": "npm run build && NODE_ENV=test np patch --no-2fa",
     "publish-minor": "npm run build && NODE_ENV=test np minor --no-2fa",
     "publish-major": "npm run build && NODE_ENV=test np major --no-2fa",

@@ -2,11 +2,20 @@ import { faker } from '@faker-js/faker';
 
 import { RewardModel } from '../../src';
 import RewardTypes from '../../src/constants/reward-types';
-import { InGameRewardAttributes, DigitalAssetRewardAttributes, RewardAttributes } from '../../src/interfaces';
+import {
+  InGameRewardAttributes,
+  DigitalAssetRewardAttributes,
+  RewardAttributes,
+} from '../../src/interfaces';
 
-export default async (rewardType = RewardTypes.DIGITAL_ASSET, params: Partial<RewardAttributes> = {}) => {
-  const discriminatorParams: InGameRewardAttributes | DigitalAssetRewardAttributes | Record<string, unknown> =
-    {};
+export default async (
+  rewardType = RewardTypes.DIGITAL_ASSET,
+  params: Partial<RewardAttributes> = {},
+) => {
+  const discriminatorParams:
+    | InGameRewardAttributes
+    | DigitalAssetRewardAttributes
+    | Record<string, unknown> = {};
 
   if (rewardType === RewardTypes.DIGITAL_ASSET) {
     Object.assign(discriminatorParams, {

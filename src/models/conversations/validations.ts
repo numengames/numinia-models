@@ -2,7 +2,10 @@ import { CallbackWithoutResultAndOptionalError } from 'mongoose';
 
 import { ConversationAttributes, ConversationDocument } from '.';
 
-function validateModelOrAssistant(this: ConversationDocument, next: CallbackWithoutResultAndOptionalError) {
+function validateModelOrAssistant(
+  this: ConversationDocument,
+  next: CallbackWithoutResultAndOptionalError,
+) {
   const doc = this as ConversationAttributes;
 
   if (!doc.model && !doc.assistant) {
