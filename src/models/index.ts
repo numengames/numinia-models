@@ -1,6 +1,8 @@
+export { LogModel } from './logs';
 export { GameModel } from './games';
 export { PlayerModel } from './players';
-export { AccountModel } from './accounts';
+export { WalletModel } from './wallets';
+export { SessionModel } from './sessions';
 export { AssistantModel } from './assistants';
 export { GameScoreModel } from './game-scores';
 export { ConversationModel } from './conversations';
