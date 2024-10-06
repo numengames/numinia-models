@@ -31,7 +31,9 @@ describe('Players', () => {
       expect(playerDocument.hyperfyId).toBe(playerObject.hyperfyId);
       expect(playerDocument.isBlocked).toBe(playerObject.isBlocked);
       expect(playerDocument.playerName).toBe(playerObject.playerName);
-      expect(playerDocument.lastConnectionDate.toString()).toBe(playerObject.lastConnectionDate.toString());
+      expect(playerDocument.lastConnectionDate.toString()).toBe(
+        playerObject.lastConnectionDate.toString(),
+      );
     });
   });
 });

@@ -33,7 +33,9 @@ describe('GameScore', () => {
     );
 
     test('it should contain all the properties', async () => {
-      const gameScoreDocument = <GameScoreDocument>await GameScoreModel.findById(gameScoreObject.id);
+      const gameScoreDocument = <GameScoreDocument>(
+        await GameScoreModel.findById(gameScoreObject.id)
+      );
 
       expect(gameScoreDocument._id).toBeDefined();
       expect(gameScoreDocument.createdAt).toBeDefined();
