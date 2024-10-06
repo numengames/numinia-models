@@ -3,7 +3,7 @@ import { Schema, model, Types } from 'mongoose';
 /**
  * Attributes for logging in-game events in the Numinia platform.
  */
-interface LogAttributes {
+export interface LogAttributes {
   /**
    * The unique identifier of the player associated with this log entry.
    */

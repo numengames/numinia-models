@@ -3,7 +3,7 @@ import { Schema, model, Types } from 'mongoose';
 /**
  * Attributes for defining a session in the Numinia platform.
  */
-interface SessionAttributes {
+export interface SessionAttributes {
   /**
    * The unique identifier of the player associated with this session.
    */
