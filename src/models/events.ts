@@ -3,9 +3,9 @@ import { Schema, model, Types } from 'mongoose';
 /**
  * Attributes for logging in-game events in the Numinia platform.
  */
-export interface LogAttributes {
+export interface EventAttributes {
   /**
-   * The unique identifier of the player associated with this log entry.
+   * The unique identifier of the player associated with this event entry.
    */
   playerId: Types.ObjectId;
 
@@ -38,7 +38,7 @@ export interface LogAttributes {
   details?: any;
 }
 
-const schema = new Schema<LogAttributes>(
+const schema = new Schema<EventAttributes>(
   {
     triggerObjectId: String,
     details: Schema.Types.Mixed,
@@ -49,6 +49,6 @@ const schema = new Schema<LogAttributes>(
   { versionKey: false },
 );
 
-export const LogModel = model<LogAttributes>('Log', schema);
+export const EventModel = model<EventAttributes>('Event', schema);
 
-export type LogDocument = ReturnType<(typeof LogModel)['hydrate']>;
+export type EventDocument = ReturnType<(typeof EventModel)['hydrate']>;

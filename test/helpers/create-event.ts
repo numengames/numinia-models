@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import { faker } from '@faker-js/faker';
 
-import { LogModel } from '../../src';
-import { LogAttributes } from '../../src/interfaces';
+import { EventModel } from '../../src';
+import { EventAttributes } from '../../src/interfaces';
 
-export default (params: Partial<LogAttributes> = {}) => {
-  const query: Partial<LogAttributes> = {
+export default (params: Partial<EventAttributes> = {}) => {
+  const query: Partial<EventAttributes> = {
     timestamp: new Date(),
     triggerObjectId: faker.string.uuid(),
     playerId: new mongoose.Types.ObjectId(),
@@ -21,7 +21,7 @@ export default (params: Partial<LogAttributes> = {}) => {
     details: { info: faker.lorem.sentence() },
   };
 
-  return LogModel.create({
+  return EventModel.create({
     ...query,
     ...params,
   });

@@ -1,5 +1,5 @@
-export { LogModel } from './logs';
 export { GameModel } from './games';
+export { EventModel } from './events';
 export { PlayerModel } from './players';
 export { WalletModel } from './wallets';
 export { SessionModel } from './sessions';
