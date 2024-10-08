@@ -3,8 +3,8 @@ export type {
   InGameRewardAttributes,
   DigitalAssetRewardAttributes,
 } from './models/rewards';
-export type { LogAttributes } from './models/logs';
 export type { GameAttributes } from './models/games';
+export type { EventAttributes } from './models/events';
 export type { WalletAttributes } from './models/wallets';
 export type { PlayerAttributes } from './models/players';
 export type { SessionAttributes } from './models/sessions';

@@ -1,5 +1,5 @@
-export type { LogDocument } from './models/logs';
 export type { GameDocument } from './models/games';
+export type { EventDocument } from './models/events';
 export type { WalletDocument } from './models/wallets';
 export type { PlayerDocument } from './models/players';
 export type { SessionDocument } from './models/sessions';
