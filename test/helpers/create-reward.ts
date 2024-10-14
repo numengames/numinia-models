@@ -8,10 +8,7 @@ import {
   RewardAttributes,
 } from '../../src/interfaces';
 
-export default async (
-  rewardType = RewardTypes.DIGITAL_ASSET,
-  params: Partial<RewardAttributes> = {},
-) => {
+export default async (rewardType: string, params: Partial<RewardAttributes> = {}) => {
   const discriminatorParams:
     | InGameRewardAttributes
     | DigitalAssetRewardAttributes

@@ -28,10 +28,10 @@ npm install -S @numengames/numinia-models
 
 - player: Stores all player information, including playerName, oncyberId, hyperfyId, and player statuses like isActive and isBlocked.
 - logs: Tracks events within the game, such as teleport, redirect, insert password, AI interactions, obtaining NFTs, and asset acquisitions.
-- sessions: Records player session data, including session start and end times.
 - conversation: Stores all kind of conversations.
 - user: Stores all our users with its kind of accounts.
 - conversation-chunk: Stores all the messages related to a specific conversation.
+- playerSessions: Records player session data, including session start and end times.
 
 ## Dependencies
 

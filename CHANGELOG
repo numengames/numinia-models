@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.0] - 2024-10-14
+
+### Added
+
+- Include `platform`, `userAgent`, `spaceName`, `isAnonymous` properties in `playerSessions` schema to track more specific values of the session.
+
+### Changed
+
+- Renamed Mongoose model from `sessions` to `playerSessions`;
+- Updated interface and type exports related to the new `playerSessions` schema.
+- Modified tests to reflect the new `playerSessions` schema.
+- Updated auto-generation script for `playerSessions` data.
+- Adjusted README.md to rename the collection from `sessions` to `playerSessions` in the Collections section.
+
 ## [5.0.0] - 2024-10-08
 
 ### Changed

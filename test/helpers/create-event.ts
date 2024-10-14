@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 import { EventModel } from '../../src';
 import { EventAttributes } from '../../src/interfaces';
 
-export default (params: Partial<EventAttributes> = {}) => {
+export default (params: Partial<EventAttributes>) => {
   const query: Partial<EventAttributes> = {
     timestamp: new Date(),
     triggerObjectId: faker.string.uuid(),
