@@ -1,10 +1,7 @@
-import { HydratedDocument } from 'mongoose';
-
 import createPlayer from '../helpers/create-player';
-import { ConversationDocument } from '../../src/types';
+import { ConversationDocument, PlayerDocument } from '../../src/types';
 import { mongoose, ConversationModel, PlayerModel } from '../../src';
 import createConversation from '../helpers/create-conversation';
-import { ConversationAttributes, PlayerAttributes } from '../../src/interfaces';
 
 const testDatabase = require('../test-db')(mongoose);
 
@@ -22,8 +19,8 @@ describe('Conversation', () => {
   });
 
   describe('when create a new conversation', () => {
-    let playerObject: HydratedDocument<PlayerAttributes>;
-    let conversationObject: HydratedDocument<ConversationAttributes>;
+    let playerObject: PlayerDocument;
+    let conversationObject: ConversationDocument;
 
     beforeAll(async () => {
       playerObject = await createPlayer();

@@ -1,7 +1,4 @@
-import { HydratedDocument } from 'mongoose';
-
-import { ConversationAttributes, ConversationChunkAttributes } from '../../src/interfaces';
-import { ConversationChunkDocument } from '../../src/types';
+import { ConversationChunkDocument, ConversationDocument } from '../../src/types';
 import createConversation from '../helpers/create-conversation';
 import createConversationChunk from '../helpers/create-conversation-chunk';
 import { mongoose, ConversationChunkModel, ConversationModel } from '../../src';
@@ -14,8 +11,8 @@ describe('ConversationChunks', () => {
   afterAll(() => testDatabase.close());
 
   describe('when create a new conversation', () => {
-    let conversationObject: HydratedDocument<ConversationAttributes>;
-    let conversationChunkObject: HydratedDocument<ConversationChunkAttributes>;
+    let conversationObject: ConversationDocument;
+    let conversationChunkObject: ConversationChunkDocument;
 
     beforeAll(async () => {
       conversationObject = await createConversation({

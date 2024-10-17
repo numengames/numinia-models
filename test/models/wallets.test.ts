@@ -1,5 +1,3 @@
-import { HydratedDocument } from 'mongoose';
-
 import createWallet from '../helpers/create-wallet';
 import createPlayer from '../helpers/create-player';
 import { WalletModel, PlayerModel, mongoose } from '../../src';
@@ -13,8 +11,8 @@ describe('Wallets', () => {
   afterAll(() => testDatabase.close());
 
   describe('when creating a new player', () => {
-    let playerObject: HydratedDocument<PlayerDocument>;
-    let walletObject: HydratedDocument<WalletDocument>;
+    let playerObject: PlayerDocument;
+    let walletObject: WalletDocument;
 
     beforeAll(async () => {
       playerObject = await createPlayer();

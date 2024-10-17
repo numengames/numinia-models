@@ -1,5 +1,3 @@
-import { HydratedDocument } from 'mongoose';
-
 import { PlayerDocument } from '../../src/types';
 import { PlayerModel, mongoose } from '../../src';
 import createPlayer from '../helpers/create-player';
@@ -12,7 +10,7 @@ describe('Players', () => {
   afterAll(() => testDatabase.close());
 
   describe('when creating a new player', () => {
-    let playerObject: HydratedDocument<PlayerDocument>;
+    let playerObject: PlayerDocument;
 
     beforeAll(async () => {
       playerObject = await createPlayer();

@@ -1,5 +1,3 @@
-import { HydratedDocument } from 'mongoose';
-
 import createPlayer from '../helpers/create-player';
 import createPlayerSession from '../helpers/create-player-session';
 import { PlayerSessionModel, PlayerModel, mongoose } from '../../src';
@@ -13,8 +11,8 @@ describe('player-session', () => {
   afterAll(() => testDatabase.close());
 
   describe('when creating a new player', () => {
-    let playerObject: HydratedDocument<PlayerDocument>;
-    let playerSessionObject: HydratedDocument<PlayerSessionDocument>;
+    let playerObject: PlayerDocument;
+    let playerSessionObject: PlayerSessionDocument;
 
     beforeAll(async () => {
       playerObject = await createPlayer();

@@ -1,9 +1,6 @@
-import { HydratedDocument } from 'mongoose';
-
 import { AssistantDocument } from '../../src/types';
 import { mongoose, AssistantModel } from '../../src';
 import createAssistant from '../helpers/create-assistant';
-import { AssistantAttributes } from '../../src/interfaces';
 
 const testDatabase = require('../test-db')(mongoose);
 
@@ -13,7 +10,7 @@ describe('Assistant', () => {
   afterAll(() => testDatabase.close());
 
   describe('when create a new assistant', () => {
-    let assistantObject: HydratedDocument<AssistantAttributes>;
+    let assistantObject: AssistantDocument;
 
     beforeAll(async () => {
       assistantObject = await createAssistant();

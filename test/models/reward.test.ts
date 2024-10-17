@@ -2,12 +2,7 @@ import createReward from '../helpers/create-reward';
 
 import { mongoose, RewardModel } from '../../src';
 import RewardTypes from '../../src/constants/reward-types';
-import {
-  DigitalAssetRewardAttributes,
-  InGameRewardAttributes,
-  RewardAttributes,
-} from '../../src/interfaces';
-import { HydratedDocument } from 'mongoose';
+import { DigitalAssetRewardDocument, InGameRewardDocument, RewardDocument } from '../../src/types';
 
 const testDatabase = require('../test-db')(mongoose);
 
@@ -17,7 +12,7 @@ describe('Game', () => {
   afterAll(() => testDatabase.close());
 
   describe(`Reward with ${RewardTypes.IN_GAME_ITEM}`, () => {
-    let playerRewardObject: HydratedDocument<RewardAttributes>;
+    let playerRewardObject: RewardDocument;
 
     beforeAll(async () => {
       playerRewardObject = await createReward(RewardTypes.IN_GAME_ITEM);
@@ -26,7 +21,7 @@ describe('Game', () => {
     afterAll(() => RewardModel.deleteOne({ _id: playerRewardObject._id }));
 
     test(`it should contain all the properties for ${RewardTypes.IN_GAME_ITEM}`, async () => {
-      const RewardDocument = <InGameRewardAttributes>(
+      const RewardDocument = <InGameRewardDocument>(
         await RewardModel.findById(playerRewardObject._id)
       );
 
@@ -43,7 +38,7 @@ describe('Game', () => {
   });
 
   describe(`Reward with ${RewardTypes.DIGITAL_ASSET}`, () => {
-    let playerRewardObject: HydratedDocument<RewardAttributes>;
+    let playerRewardObject: RewardDocument;
 
     beforeAll(async () => {
       playerRewardObject = await createReward(RewardTypes.DIGITAL_ASSET);
@@ -52,7 +47,7 @@ describe('Game', () => {
     afterAll(() => RewardModel.deleteOne({ _id: playerRewardObject._id }));
 
     test(`it should contain all the properties for ${RewardTypes.DIGITAL_ASSET}`, async () => {
-      const RewardDocument = <DigitalAssetRewardAttributes>(
+      const RewardDocument = <DigitalAssetRewardDocument>(
         await RewardModel.findById(playerRewardObject._id)
       );
 

@@ -1,9 +1,6 @@
-import { HydratedDocument } from 'mongoose';
-
 import createGame from '../helpers/create-game';
 import { GameDocument } from '../../src/types';
 import { mongoose, GameModel } from '../../src';
-import { GameAttributes } from '../../src/interfaces';
 
 const testDatabase = require('../test-db')(mongoose);
 
@@ -13,7 +10,7 @@ describe('Game', () => {
   afterAll(() => testDatabase.close());
 
   describe('when creating a new collect coins game', () => {
-    let gameObject: HydratedDocument<GameAttributes>;
+    let gameObject: GameDocument;
 
     beforeAll(async () => {
       gameObject = await createGame();

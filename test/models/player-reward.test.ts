@@ -1,7 +1,4 @@
-import { HydratedDocument } from 'mongoose';
-
-import { RewardAttributes, PlayerRewardAttributes, PlayerAttributes } from '../../src/interfaces';
-import { PlayerRewardDocument } from '../../src/types';
+import { PlayerDocument, PlayerRewardDocument, RewardDocument } from '../../src/types';
 import createReward from '../helpers/create-reward';
 import createPlayer from '../helpers/create-player';
 import rewardTypes from '../../src/constants/reward-types';
@@ -16,9 +13,9 @@ describe('PlayerReward', () => {
   afterAll(() => testDatabase.close());
 
   describe('when create a new player reward', () => {
-    let playerObject: HydratedDocument<PlayerAttributes>;
-    let rewardObject: HydratedDocument<RewardAttributes>;
-    let playerRewardObject: HydratedDocument<PlayerRewardAttributes>;
+    let playerObject: PlayerDocument;
+    let rewardObject: RewardDocument;
+    let playerRewardObject: PlayerRewardDocument;
 
     beforeAll(async () => {
       playerObject = await createPlayer();
@@ -47,7 +44,7 @@ describe('PlayerReward', () => {
       expect(playerRewardDocument.createdAt).toBeDefined();
       expect(playerRewardDocument.updatedAt).toBeDefined();
       expect(playerRewardDocument.playerId).toBeDefined();
-      expect(playerRewardDocument.rewardId.toString()).toBe(rewardObject._id.toString());
+      expect(playerRewardDocument.rewardId.toString()).toBe(rewardObject._id?.toString());
     });
   });
 });

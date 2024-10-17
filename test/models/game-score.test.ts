@@ -1,11 +1,8 @@
-import { HydratedDocument } from 'mongoose';
-
 import createGame from '../helpers/create-game';
 import createPlayer from '../helpers/create-player';
-import { GameScoreDocument } from '../../src/types';
+import { GameDocument, GameScoreDocument, PlayerDocument } from '../../src/types';
 import createGameScore from '../helpers/create-game-score';
 import { mongoose, GameScoreModel, PlayerModel, GameModel } from '../../src';
-import { GameAttributes, PlayerAttributes, GameScoreAttributes } from '../../src/interfaces';
 
 const testDatabase = require('../test-db')(mongoose);
 
@@ -15,9 +12,9 @@ describe('GameScore', () => {
   afterAll(() => testDatabase.close());
 
   describe('when creating a new collect coins game', () => {
-    let userObject: HydratedDocument<PlayerAttributes>;
-    let gameObject: HydratedDocument<GameAttributes>;
-    let gameScoreObject: HydratedDocument<GameScoreAttributes>;
+    let userObject: PlayerDocument;
+    let gameObject: GameDocument;
+    let gameScoreObject: GameScoreDocument;
 
     beforeAll(async () => {
       [gameObject, userObject] = await Promise.all([createGame(), createPlayer()]);

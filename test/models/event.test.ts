@@ -1,5 +1,3 @@
-import { HydratedDocument } from 'mongoose';
-
 import createEvent from '../helpers/create-event';
 import createPlayer from '../helpers/create-player';
 import { EventModel, PlayerModel, mongoose } from '../../src';
@@ -13,8 +11,8 @@ describe('Events', () => {
   afterAll(() => testDatabase.close());
 
   describe('when creating a new player', () => {
-    let eventObject: HydratedDocument<EventDocument>;
-    let playerObject: HydratedDocument<PlayerDocument>;
+    let eventObject: EventDocument;
+    let playerObject: PlayerDocument;
 
     beforeAll(async () => {
       playerObject = await createPlayer();
