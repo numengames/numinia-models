@@ -1,5 +1,4 @@
 import mongoose, { Schema, model, Types, Document } from 'mongoose';
-
 import RewardTypes from '../constants/reward-types';
 
 export interface RewardAttributes {
@@ -41,24 +40,31 @@ const rewardSchema = new Schema<RewardAttributes>(
 export const RewardModel =
   mongoose.models.Reward || model<RewardAttributes>('Reward', rewardSchema);
 
-export const DigitalAssetRewardModel = RewardModel.discriminator<DigitalAssetRewardDocument>(
-  RewardTypes.DIGITAL_ASSET,
-  new Schema<DigitalAssetRewardAttributes>({
-    tokenId: { type: String, required: true },
-    blockchain: { type: String, required: true },
-    contractAddress: { type: String, required: true },
-  }),
-);
+let DigitalAssetRewardModel, InGameRewardModel;
 
-export const InGameRewardModel = RewardModel.discriminator<InGameRewardDocument>(
-  RewardTypes.IN_GAME_ITEM,
-  new Schema<InGameRewardAttributes>({
-    power: Number,
-    rarity: String,
-    durability: String,
-  }),
-);
+if (!RewardModel.discriminators || !RewardModel.discriminators[RewardTypes.DIGITAL_ASSET]) {
+  DigitalAssetRewardModel = RewardModel.discriminator<DigitalAssetRewardDocument>(
+    RewardTypes.DIGITAL_ASSET,
+    new Schema<DigitalAssetRewardAttributes>({
+      tokenId: { type: String, required: true },
+      blockchain: { type: String, required: true },
+      contractAddress: { type: String, required: true },
+    }),
+  );
+}
 
+if (!RewardModel.discriminators || !RewardModel.discriminators[RewardTypes.IN_GAME_ITEM]) {
+  InGameRewardModel = RewardModel.discriminator<InGameRewardDocument>(
+    RewardTypes.IN_GAME_ITEM,
+    new Schema<InGameRewardAttributes>({
+      power: Number,
+      rarity: String,
+      durability: String,
+    }),
+  );
+}
+
+export { DigitalAssetRewardModel, InGameRewardModel };
 export type RewardDocument = Document & RewardAttributes;
 export type InGameRewardDocument = RewardDocument & InGameRewardAttributes;
 export type DigitalAssetRewardDocument = RewardDocument & DigitalAssetRewardAttributes;
