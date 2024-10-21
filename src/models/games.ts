@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 export interface GameAttributes {
   name: string;
@@ -24,6 +24,6 @@ const schema = new Schema<GameAttributes>(
   { versionKey: false, timestamps: true },
 );
 
-export const GameModel = model<GameAttributes>('Game', schema);
+export const GameModel = mongoose.models.Game || model<GameAttributes>('Game', schema);
 
 export type GameDocument = ReturnType<(typeof GameModel)['hydrate']>;

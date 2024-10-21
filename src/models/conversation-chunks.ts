@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 export interface ConversationChunkAttributes {
   role: string;
@@ -24,9 +24,8 @@ const schema = new Schema<ConversationChunkAttributes>(
   { versionKey: false, timestamps: true },
 );
 
-export const ConversationChunkModel = model<ConversationChunkAttributes>(
-  'ConversationChunk',
-  schema,
-);
+export const ConversationChunkModel =
+  mongoose.models.ConversationChunk ||
+  model<ConversationChunkAttributes>('ConversationChunk', schema);
 
 export type ConversationChunkDocument = ReturnType<(typeof ConversationChunkModel)['hydrate']>;

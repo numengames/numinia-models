@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 import { RewardDocument } from './rewards';
 import { PlayerDocument } from './players';
@@ -19,6 +19,7 @@ const schema = new Schema<PlayerRewardAttributes>(
   { versionKey: false, timestamps: true },
 );
 
-export const PlayerRewardModel = model<PlayerRewardAttributes>('PlayerReward', schema);
+export const PlayerRewardModel =
+  mongoose.models.PlayerReward || model<PlayerRewardAttributes>('PlayerReward', schema);
 
 export type PlayerRewardDocument = ReturnType<(typeof PlayerRewardModel)['hydrate']>;

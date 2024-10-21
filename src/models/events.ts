@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 /**
  * Attributes for logging in-game events in the Numinia platform.
@@ -49,6 +49,6 @@ const schema = new Schema<EventAttributes>(
   { versionKey: false },
 );
 
-export const EventModel = model<EventAttributes>('Event', schema);
+export const EventModel = mongoose.models.Event || model<EventAttributes>('Event', schema);
 
 export type EventDocument = ReturnType<(typeof EventModel)['hydrate']>;
