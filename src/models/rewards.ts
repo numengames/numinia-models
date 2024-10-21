@@ -40,8 +40,10 @@ const rewardSchema = new Schema<RewardAttributes>(
 export const RewardModel =
   mongoose.models.Reward || model<RewardAttributes>('Reward', rewardSchema);
 
+let DigitalAssetRewardModel, InGameRewardModel;
+
 if (!RewardModel.discriminators || !RewardModel.discriminators[RewardTypes.DIGITAL_ASSET]) {
-  RewardModel.discriminator<DigitalAssetRewardDocument>(
+  DigitalAssetRewardModel = RewardModel.discriminator<DigitalAssetRewardDocument>(
     RewardTypes.DIGITAL_ASSET,
     new Schema<DigitalAssetRewardAttributes>({
       tokenId: { type: String, required: true },
@@ -52,7 +54,7 @@ if (!RewardModel.discriminators || !RewardModel.discriminators[RewardTypes.DIGIT
 }
 
 if (!RewardModel.discriminators || !RewardModel.discriminators[RewardTypes.IN_GAME_ITEM]) {
-  RewardModel.discriminator<InGameRewardDocument>(
+  InGameRewardModel = RewardModel.discriminator<InGameRewardDocument>(
     RewardTypes.IN_GAME_ITEM,
     new Schema<InGameRewardAttributes>({
       power: Number,
@@ -62,6 +64,7 @@ if (!RewardModel.discriminators || !RewardModel.discriminators[RewardTypes.IN_GA
   );
 }
 
+export { DigitalAssetRewardModel, InGameRewardModel };
 export type RewardDocument = Document & RewardAttributes;
 export type InGameRewardDocument = RewardDocument & InGameRewardAttributes;
 export type DigitalAssetRewardDocument = RewardDocument & DigitalAssetRewardAttributes;
