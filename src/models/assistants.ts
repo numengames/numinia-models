@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 export interface AssistantAttributes {
   name: string;
@@ -18,6 +18,7 @@ const schema = new Schema<AssistantAttributes>(
   { versionKey: false, timestamps: true },
 );
 
-export const AssistantModel = model<AssistantAttributes>('Assistant', schema);
+export const AssistantModel =
+  mongoose.models.Assistant || model<AssistantAttributes>('Assistant', schema);
 
 export type AssistantDocument = ReturnType<(typeof AssistantModel)['hydrate']>;

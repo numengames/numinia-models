@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 import { validateModelOrAssistant } from './validations';
 
@@ -49,6 +49,7 @@ schema.pre('validate', validateModelOrAssistant);
 
 schema.index({ conversationId: 1 });
 
-export const ConversationModel = model<ConversationAttributes>('Conversation', schema);
+export const ConversationModel =
+  mongoose.models.Conversation || model<ConversationAttributes>('Conversation', schema);
 
 export type ConversationDocument = ReturnType<(typeof ConversationModel)['hydrate']>;

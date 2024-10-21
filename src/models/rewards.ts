@@ -1,4 +1,4 @@
-import { Schema, model, Types, Document } from 'mongoose';
+import mongoose, { Schema, model, Types, Document } from 'mongoose';
 
 import RewardTypes from '../constants/reward-types';
 
@@ -38,7 +38,8 @@ const rewardSchema = new Schema<RewardAttributes>(
   { versionKey: false, timestamps: true, discriminatorKey: 'type' },
 );
 
-export const RewardModel = model<RewardAttributes>('Reward', rewardSchema);
+export const RewardModel =
+  mongoose.models.Reward || model<RewardAttributes>('Reward', rewardSchema);
 
 export const DigitalAssetRewardModel = RewardModel.discriminator<DigitalAssetRewardDocument>(
   RewardTypes.DIGITAL_ASSET,

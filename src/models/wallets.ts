@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 /**
  * Attributes for defining a wallet associated with a player in the Numinia platform.
@@ -40,6 +40,6 @@ const schema = new Schema<WalletAttributes>(
 
 schema.index({ walletAddress: 1 }, { unique: true });
 
-export const WalletModel = model<WalletAttributes>('Wallet', schema);
+export const WalletModel = mongoose.models.Wallet || model<WalletAttributes>('Wallet', schema);
 
 export type WalletDocument = ReturnType<(typeof WalletModel)['hydrate']>;

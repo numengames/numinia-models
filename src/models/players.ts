@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 /**
  * Attributes for defining a player in the Numinia platform.
@@ -65,6 +65,6 @@ const schema = new Schema<PlayerAttributes>(
 schema.index({ oncyberId: 1 }, { unique: true, sparse: true });
 schema.index({ hyperfyId: 1 }, { unique: true, sparse: true });
 
-export const PlayerModel = model<PlayerAttributes>('Player', schema);
+export const PlayerModel = mongoose.models.Player || model<PlayerAttributes>('Player', schema);
 
 export type PlayerDocument = ReturnType<(typeof PlayerModel)['hydrate']>;

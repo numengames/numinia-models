@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 /**
  * Attributes for defining a session in the Numinia platform.
@@ -58,6 +58,7 @@ const schema = new Schema<PlayerSessionAttributes>(
   { versionKey: false },
 );
 
-export const PlayerSessionModel = model<PlayerSessionAttributes>('PlayerSession', schema);
+export const PlayerSessionModel =
+  mongoose.models.PlayerSession || model<PlayerSessionAttributes>('PlayerSession', schema);
 
 export type PlayerSessionDocument = ReturnType<(typeof PlayerSessionModel)['hydrate']>;

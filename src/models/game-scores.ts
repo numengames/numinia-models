@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import mongoose, { Schema, model, Types } from 'mongoose';
 
 export interface GameScoreAttributes {
   timer: number;
@@ -23,6 +23,7 @@ const schema = new Schema<GameScoreAttributes>(
 schema.index({ game: 1 });
 schema.index({ player: 1 }, { sparse: true });
 
-export const GameScoreModel = model<GameScoreAttributes>('GameScore', schema);
+export const GameScoreModel =
+  mongoose.models.GameScore || model<GameScoreAttributes>('GameScore', schema);
 
 export type GameScoreDocument = ReturnType<(typeof GameScoreModel)['hydrate']>;
