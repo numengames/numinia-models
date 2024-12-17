@@ -2,7 +2,7 @@ export { GameModel } from './games';
 export { EventModel } from './events';
 export { PlayerModel } from './players';
 export { WalletModel } from './wallets';
-export { AssistantModel } from './assistants';
+export { AIAgentModel } from './ai-agents';
 export { GameScoreModel } from './game-scores';
 export { ConversationModel } from './conversations';
 export { PlayerRewardModel } from './player-rewards';
